@@ -13,6 +13,11 @@ Dark Theme | Light Theme
 > **NOTE**: The app may request for notification permissions. It will notify you only to **remind to start the service** (and connect to the remote peer), when the MIDI port is opened by another app. This software does not have ADs of any kind, nor collects any personal or usage data.
 
 
+## Installation
+
+Download the latest APK file in the [Releases Page](https://github.com/oscaracena/net-midi-vd/releases) and copy it to your Android device. There, follow the instructions to install.
+
+
 ## License
 
 This software is (c) of Oscar Aceña 2024-2025. Released under the terms of GPL v3.
