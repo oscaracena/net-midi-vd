@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Network MIDI 2.0 Virtual Device</string>
+    <string name="channel_name">Connection management</string>
+    <string name="channel_desc">Connect to remote devices</string>
+</resources>

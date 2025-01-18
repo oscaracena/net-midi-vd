@@ -1,0 +1,6 @@
+[submodule "app/src/main/cpp/libs/NetUMP"]
+	path = app/src/main/cpp/libs/NetUMP
+	url = https://github.com/oscaracena/NetUMP
+[submodule "app/src/main/cpp/libs/BEBSDK"]
+	path = app/src/main/cpp/libs/BEBSDK
+	url = https://github.com/bbouchez/BEBSDK.git
