@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <devices>
-    <device manufacturer="7FGames" product="Nakama" name="Network MIDI 2.0 Virtual Device">
+    <device name="Network MIDI 2.0 VD">
         <input-port name="Input" />       <!-- InFromApp -->
         <input-port name="Internal" />    <!-- InFromNet -->
         <output-port name="Output" />     <!-- OutToApp -->
