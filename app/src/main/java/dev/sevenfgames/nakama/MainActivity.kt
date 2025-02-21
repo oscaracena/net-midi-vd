@@ -6,6 +6,8 @@ import android.media.midi.MidiDeviceInfo
 import android.media.midi.MidiManager
 import android.net.DnsResolver
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.util.Patterns
 import androidx.activity.ComponentActivity
@@ -110,7 +112,7 @@ class MainActivity : ComponentActivity() {
         // Open our MIDI device and send it to AMidi
         midi = getSystemService(MIDI_SERVICE) as MidiManager
         zdev = midi.devices.find {
-            it.properties.getString(MidiDeviceInfo.PROPERTY_PRODUCT) == "Nakama"
+            it.properties.getString(MidiDeviceInfo.PROPERTY_NAME) == "Network MIDI 2.0 VD"
         }
         if (zdev == null) {
             Log.e(LTAG, "Nakama MIDI device not found!")
@@ -133,11 +135,22 @@ class MainActivity : ComponentActivity() {
             return
         }
 
+        if (zdev == null) {
+            Log.e(LTAG, "Nakama MIDI device not found!")
+            setServerState(ConnectionState.STOPPED)
+            showMessage("ERROR: Nakama MIDI device not found!")
+            return
+        }
+
         midi.openDevice(zdev, {
             // OutToApp, InFromNet
             startProcessingMidi(it, 1, 1, ipAddress, port,
                 endpointName.trim().ifEmpty { "Nakama" })
             setServerState(ConnectionState.RUNNING)
+            Handler(Looper.getMainLooper()).postDelayed({
+                moveTaskToBack(true)
+            }, 1000)
+
         }, null)
 
         setSettingsValue("remote_host", host)
@@ -309,7 +322,7 @@ class MainActivity : ComponentActivity() {
 
         return suspendCoroutine { continuation ->
             val timer = Timer("DNSResolver timer", true)
-            timer.schedule(10000) {
+            timer.schedule(2000) {
                 Log.e(LTAG, "DNSResolver timed out")
                 continuation.resume("")
             }

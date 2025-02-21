@@ -20,13 +20,8 @@ const val NOTIFICATION_ID = 1
 class MidiForwarder: MidiReceiver() {
     private var output: MidiReceiver? = null
 
-    init {
-        Log.i(LTAG, "MidiForwarder created")
-    }
-
+    // Keep this function as fast as possible
     override fun onSend(msg: ByteArray?, offset: Int, count: Int, timestamp: Long) {
-        Log.i(LTAG, "MidiForwarder received message (output: ${output != null})")
-
         if (output != null)
             output!!.onSend(msg, offset, count, timestamp)
     }
