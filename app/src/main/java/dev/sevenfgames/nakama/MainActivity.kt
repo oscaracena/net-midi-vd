@@ -322,7 +322,7 @@ class MainActivity : ComponentActivity() {
 
         return suspendCoroutine { continuation ->
             val timer = Timer("DNSResolver timer", true)
-            timer.schedule(2000) {
+            timer.schedule(10000) {
                 Log.e(LTAG, "DNSResolver timed out")
                 continuation.resume("")
             }
